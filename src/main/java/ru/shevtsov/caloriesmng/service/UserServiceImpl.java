@@ -1,5 +1,8 @@
 package ru.shevtsov.caloriesmng.service;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.shevtsov.caloriesmng.model.User;
 import ru.shevtsov.caloriesmng.repository.UserRepository;
 import ru.shevtsov.caloriesmng.util.exception.NotFoundException;
@@ -10,8 +13,10 @@ import java.util.List;
  * Created by dead_rabbit
  * 07.10.2016
  */
+@Service
 public class UserServiceImpl implements UserService{
 
+    @Autowired
     private UserRepository repository;
 
     @Override

@@ -1,5 +1,6 @@
 package ru.shevtsov.caloriesmng.repository.mock;
 
+import org.springframework.stereotype.Repository;
 import ru.shevtsov.caloriesmng.LoggerWrapper;
 import ru.shevtsov.caloriesmng.model.User;
 import ru.shevtsov.caloriesmng.repository.UserRepository;
@@ -11,6 +12,7 @@ import java.util.List;
  * Created by dead_rabbit
  * 07.10.2016
  */
+@Repository
 public class MockUserRepository implements UserRepository{
 
     private static final LoggerWrapper LOG = LoggerWrapper.get(MockUserRepository.class);
