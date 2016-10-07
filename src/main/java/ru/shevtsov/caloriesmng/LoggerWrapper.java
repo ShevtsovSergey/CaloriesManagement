@@ -1,4 +1,4 @@
-package ru.shevtsov.caloriesmng.web;
+package ru.shevtsov.caloriesmng;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
