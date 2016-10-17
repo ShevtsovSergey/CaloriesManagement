@@ -1,21 +1,28 @@
-package ru.shevtsov.caloriesmng.repository.mock;
+package ru.shevtsov.caloriesmng.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.shevtsov.caloriesmng.LoggerWrapper;
 import ru.shevtsov.caloriesmng.model.User;
-import ru.shevtsov.caloriesmng.repository.UserRepository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by dead_rabbit
- * 07.10.2016
- */
 @Repository
 public class MockUserRepository implements UserRepository{
 
     private static final LoggerWrapper LOG = LoggerWrapper.get(MockUserRepository.class);
+
+    @PostConstruct
+    public void postConstruct(){
+        LOG.info("PostConstruct");
+    }
+
+    @PreDestroy
+    public void PreDestroy(){
+        LOG.info("PreDestroy");
+    }
 
     @Override
     public boolean delete(int id) {

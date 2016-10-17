@@ -11,22 +11,33 @@ import java.util.Set;
  */
 public class User extends NamedEntity{
 
-    private String email;
+    protected String email;
     //length(min = 5)
-    private String password;
-    private boolean enabled = true;
-    private Date registered = new Date();
-    private Set<Role> autoritties;
-    public User(String name) {
+    protected String password;
+    protected boolean enabled = true;
+    protected Date registered = new Date();
+    protected Set<Role> roles;
+
+    public User() {
     }
 
-    public User(String name, String email, String password, Role role, Role... roles) {
-        super(name);
+    public User(User u) {
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Role role, Role... roles) {
+        this(id, name, email, password, enabled, EnumSet.of(role, roles));
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
+        super(id, name);
         this.email = email;
         this.password = password;
-        this.enabled = true;
-        this.autoritties = EnumSet.of(role, roles);
+        this.enabled = enabled;
+        this.roles = roles;
     }
+
+
 
     public String getEmail() {
         return email;
@@ -52,16 +63,24 @@ public class User extends NamedEntity{
         this.enabled = enabled;
     }
 
-    public void addAuthority(Role authority) {
-        if (autoritties == null) {
-            autoritties = EnumSet.of(authority);
+    public void addRole(Role authority) {
+        if (roles == null) {
+            roles = EnumSet.of(authority);
         } else {
-            autoritties.add(authority);
+            roles.add(authority);
         }
     }
 
-    public Collection<Role> getAutoritties() {
-        return autoritties;
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public Date getRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(Date registered) {
+        this.registered = registered;
     }
 
     @Override
@@ -71,7 +90,7 @@ public class User extends NamedEntity{
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
                 ", registered=" + registered +
-                ", autoritties=" + autoritties +
+                ", autoritties=" + roles +
                 '}';
     }
 }

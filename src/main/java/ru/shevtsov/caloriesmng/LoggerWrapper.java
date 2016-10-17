@@ -2,6 +2,7 @@ package ru.shevtsov.caloriesmng;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.shevtsov.caloriesmng.util.exception.NotFoundException;
 
 /**
  * Created by dead_rabbit
@@ -70,4 +71,13 @@ public class LoggerWrapper {
         return new UnsupportedOperationException(msg);
     }
 
+    public NotFoundException getNotFoundException(String reason) {
+        logger.error("No data found");
+        return new NotFoundException(reason);
+    }
+
+    public IllegalStateException gettIllegalStateException(String msg) {
+        logger.error(msg);
+        return new IllegalStateException(msg);
+    }
 }
