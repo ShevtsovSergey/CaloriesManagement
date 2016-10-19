@@ -2,15 +2,22 @@ package ru.shevtsov.caloriesmng.model;
 
 import ru.shevtsov.caloriesmng.LoggerWrapper;
 
+import javax.persistence.*;
+
 /**
  * Created by dead_rabbit
  * 07.10.2016
  */
+@MappedSuperclass
+@Access(AccessType.FIELD)
 public class BaseEntity {
     private static final LoggerWrapper LOG = LoggerWrapper.get(BaseEntity.class);
 
     public static final int START_SEQ = 10000;
 
+    @Id
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     protected Integer id;
 
     public BaseEntity() {

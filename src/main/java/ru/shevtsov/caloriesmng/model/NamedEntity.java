@@ -1,11 +1,21 @@
 package ru.shevtsov.caloriesmng.model;
 
+
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
 /**
  * Created by dead_rabbit
  * 07.10.2016
  */
+@MappedSuperclass
 public class NamedEntity extends BaseEntity {
 
+    @NotEmpty
+    @Column(name = "name", nullable = false)
     protected String name;
 
     public NamedEntity() {
