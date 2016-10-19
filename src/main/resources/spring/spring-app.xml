@@ -11,6 +11,8 @@
         <!--<property name="repository" ref="mockUserRepository"></property>-->
     <!--</bean>-->
 
+    <import resource="spring-tools.xml"/>
+
     <context:annotation-config/>
 
     <context:component-scan base-package="ru.shevtsov.**.service"/>
