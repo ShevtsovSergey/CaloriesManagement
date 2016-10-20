@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="webCalories:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="calories-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="webCalories:war exploded" />
-    </root>
-  </artifact>
-</component>

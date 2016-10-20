@@ -5,6 +5,23 @@
          version="3.1">
     <display-name>CaloriesManagement</display-name>
 
+    <context-param>
+        <param-name>spring.profiles.default</param-name>
+        <param-value>postgres,datajpa</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/spring-app.xml
+            classpath:spring/spring-db.xml
+        </param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>userServlet</servlet-name>
         <servlet-class>ru.shevtsov.caloriesmng.web.UserServlet</servlet-class>
@@ -13,6 +30,16 @@
     <servlet-mapping>
         <servlet-name>userServlet</servlet-name>
         <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mealServlet</servlet-name>
+        <servlet-class>ru.shevtsov.caloriesmng.web.MealServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mealServlet</servlet-name>
+        <url-pattern>/meals</url-pattern>
     </servlet-mapping>
 
 </web-app>
