@@ -14,6 +14,7 @@ import java.util.List;
  * Created by dead_rabbit
  * 19.10.2016
  */
+@Transactional(readOnly = true)
 public interface ProxyUserRepository  extends JpaRepository<User, Integer> {
 
     @Override
