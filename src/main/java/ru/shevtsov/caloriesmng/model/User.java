@@ -1,6 +1,7 @@
 package ru.shevtsov.caloriesmng.model;
 
-
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -21,6 +22,7 @@ import java.util.Set;
         @NamedQuery(name = User.BY_EMAIL, query = "SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.email=?1"),
         @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u LEFT JOIN FETCH u.roles ORDER BY u.name, u.email")
 })
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User extends NamedEntity{
 
     public static final String DELETE = "User.delete";
@@ -47,6 +49,7 @@ public class User extends NamedEntity{
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     protected Set<Role> roles;
 
     public User() {

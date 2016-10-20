@@ -25,4 +25,7 @@
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LRU"/>
 
+    <cache name="ru.shevtsov.caloriesmng.model.User"
+            maxElementsInMemory="100"/>
+
 </ehcache>
